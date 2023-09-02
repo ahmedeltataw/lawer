@@ -1,0 +1,37 @@
+--- 
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+import Header from "../components/header.astro";
+import '../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css'
+---
+
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap">
+    	</GoogleFontsOptimizer>
+	</head>
+	<body>
+		<Header />
+		<slot />
+	</body>
+</html>
+
+<style is:global lang="scss">
+	a{
+		display: inline-block;
+	}
+	img{
+		object-fit: contain;
+	}
+</style>

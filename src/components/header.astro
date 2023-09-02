@@ -1,0 +1,37 @@
+---
+//import astro components
+import { Image } from 'astro:assets';
+// import logo 
+import logo from "../assets/logo.png"
+// data
+import NavLinks from "../data/navLink";
+// import my components
+import Link from './link.astro';
+---
+<header class="bg-red-500 ">
+    <div class="container">
+        <nav class="flex items-center py-5 ">
+            <a href="/" class="logo">
+                <Image src={logo} format='avif' quality={"mid"} alt="logo company" class=" w-52"/>
+            </a>
+            <ul class="flex mx-auto">
+                {
+                    NavLinks.map((e)=>(
+                        <li class="nav-link first:pt-0 pr-8" >
+                            <Link url={e.path}  title={e.title} icon={e.icon}  classes=" text-black text-[16px] font-[600] "/>
+                        </li>
+                    ))
+                }
+            </ul>
+            <div class="flex"> 
+                <button type="button" aria-label="contactUs" class="bg-amber-600 rounded-md btn" >
+                    <Link href="/" classes=" px-5 py-3  text-slate-50 text-[14px]  font-[500]" title=" تواصل معنا "  icon="fa-light fa-headset pr-1"/> 
+                </button>
+                <button type="button" aria-label="login" class="bg-amber-600 rounded-md btn mr-2" >
+                    <Link href="/" classes=" px-5 py-3  text-slate-50 text-[14px]  font-[500]" title="  تسجيل الدخول "  icon="fa-light fa-lightbulb-on pr-1"/> 
+                </button>
+                
+            </div>
+        </nav>
+    </div>
+</header>
